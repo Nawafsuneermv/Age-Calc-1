@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Age Calculator</title>
+</head>
+<body>
+	<center>
+		<h1 id="title">Age Calculator</h1>
+		<br>
+		<br>
+		<form>
+			Year <input type="text" placeholder="year" id="year">
+			<br>
+			<br>
+			Month <input type="text" placeholder="year" id="month">
+			<br>
+			<br>
+			Date <input type="text" placeholder="year" id="date">
+			<br>
+			<br>
+			<input type="button" value="Calculate" onclick="age()" id="btn">
+			<br>
+			<br>
+			<div id="age"></div>
+
+		</form>
+	</center>
+	<style>
+	   body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(221, 221, 69);
+        font-size: 15px;
+        line-height: 1.5;
+        padding: 0;
+      }
+     * {
+     box-sizing: border-box;
+      }
+	  #btn{
+		
+        outline: none;
+        border: none;
+        border-radius: 2px;
+        background-color: #0761b6;
+        color: #ffffff;
+        padding: 13px 16px;
+        text-align: center;
+        font-size: 15px;
+	  }
+	  #title{
+		color: #0761b6;
+		position: relative;
+        padding: 0;
+        margin: 0;
+		font: italic small-caps bold 16px/2 cursive;
+        font-weight: 300;
+        font-size: 35px;
+       -webkit-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+       transition: all 0.4s ease 0s;
+	  }
+	</style>
+</body>
+<script>
+	function age() {
+    var d1 = document.getElementById("date").value;
+    var m1 = document.getElementById("month").value;
+    var y1 = document.getElementById("year").value;
+	if(d1==""||m1==""||y1==""){
+		alert("INPUT DATE REQUIRED");
+	}
+	else{
+		var date = new Date();
+    var d2 = date.getDate();
+    var m2 = 1 + date.getMonth();
+    var y2 = date.getFullYear();
+    var month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (d1 > d2) {
+        d2 = d2 + month[m2 - 1];
+        m2 = m2 - 1;
+    }
+    if (m1 > m2) {
+        m2 = m2 + 12;
+        y2 = y2 - 1;
+    }
+    var d = d2 - d1;
+    var m = m2 - m1;
+    var y = y2 - y1;
+    document.getElementById("age").innerHTML =
+        "Your Age is " + y + " Years " + m + " Months " + d + " Days";	
+
+	}
+    
+}
+
+</script>
+</html>
